@@ -1,0 +1,39 @@
+# Kopiere diese Datei zu config.yaml und trage deine Postfächer/Portale ein.
+# WICHTIG: config.yaml NIEMALS committen, falls sie echte Adressen/Details enthält
+# (steht bereits in .gitignore). Passwörter gehören NIE hier rein, sondern in .env
+# (siehe .env.example) und werden hier nur per Umgebungsvariablen-Name referenziert.
+
+email_accounts:
+  - name: privat
+    imap_server: imap.gmx.net
+    imap_port: 993
+    username: dein.name@gmx.de
+    password_env: GMX_PASSWORD   # Name der Variable in .env, NICHT das Passwort selbst
+    ordner: INBOX
+    suchbegriffe:
+      - Rechnung
+      - Invoice
+      - Quittung
+    absender_filter: []          # optional: nur Mails von diesen Absendern berücksichtigen
+
+  - name: firma
+    imap_server: imap.mail.de
+    imap_port: 993
+    username: buchhaltung@deine-firma.de
+    password_env: FIRMA_PASSWORD
+    ordner: INBOX
+    suchbegriffe:
+      - Rechnung
+      - Invoice
+    absender_filter: []
+
+portale:
+  adobe:
+    aktiv: true
+    storage_state: .auth/adobe_state.json
+  amazon:
+    aktiv: true
+    storage_state: .auth/amazon_state.json
+
+ablage:
+  basis_ordner: Rechnungen
